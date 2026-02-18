@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anniversary 💕</title>
+
+<style>
+    #bgVideo{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+
+/* ทำพื้นหลัง body โปร่งใส */
+body{
+    background:none;
+}
+
+/* พื้นหลังหวานฟุ้ง */
+body{
+    <video autoplay loop playsinline id="bgVideo">
+    <source src="VID_20260218_081004_163.mp4" type="video/mp4">
+</video>
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-family:'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff9ecf,#ff4fa3,#ffb6e6);
+    background-size:400% 400%;
+    animation: bgmove 8s ease infinite;
+    overflow:hidden;
+    color:white;
+}
+
+/* ขยับพื้นหลัง */
+@keyframes bgmove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* กล่องกลาง */
+.container{
+    background: rgba(255,255,255,0.15);
+    padding:50px;
+    border-radius:30px;
+    backdrop-filter: blur(15px);
+    box-shadow:0 0 40px rgba(255,255,255,0.6);
+    animation: fadeIn 2s ease;
+}
+
+/* หัวข้อหลัก */
+h1{
+    font-size:48px;
+    margin-bottom:20px;
+    text-shadow:0 0 20px #fff;
+    animation: glow 2s infinite alternate;
+}
+
+/* เอฟเฟกต์เรืองแสง */
+@keyframes glow{
+    from{ text-shadow:0 0 10px #fff;}
+    to{ text-shadow:0 0 30px #ff00cc;}
+}
+
+/* ข้อความรอง */
+p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+/* ปุ่มหัวใจ */
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff1493,#ff69b4);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px #ff69b4;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* หัวใจลอย */
+.heart{
+    position:absolute;
+    bottom:-50px;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes floatUp{
+    0%{ transform:translateY(0); opacity:0.7;}
+    100%{ transform:translateY(-100vh); opacity:0;}
+}
+
+/* เอฟเฟกต์เข้าหน้า */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>สุขสันต์วันครบรอบนะค้าบที่รักก 💕</h1>
+    <p>
+        ขอบคุณที่อยู่ข้างกันเสมอ 💖<br>
+        ทุกช่วงเวลาที่มีเธอคือความสุขที่สุดเลย ✨<br>
+        ขอให้เรามีกันแบบนี้ไปนาน ๆ นะ
+    </p>
+
+    <button onclick="showLove()">กดดูความในใจ 💌</button>
+</div>
+
+<script>
+function showLove(){
+    alert("รักที่สุดเลยนะ 💕 อยู่ด้วยกันไปนาน ๆ เลยน้าาา ✨");
+}
+
+/* สร้างหัวใจลอย */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random()*20 + 20) + "px";
+    heart.style.animationDuration = (Math.random()*3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+  </html>
