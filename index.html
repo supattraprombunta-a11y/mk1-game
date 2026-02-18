@@ -6,9 +6,26 @@
 <title>Anniversary 💕</title>
 
 <style>
+    #bgVideo{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+
+/* ทำพื้นหลัง body โปร่งใส */
+body{
+    background:none;
+}
 
 /* พื้นหลังหวานฟุ้ง */
 body{
+    <video autoplay loop playsinline id="bgVideo">
+    <source src="VID_20260218_081004_163.mp4" type="video/mp4">
+</video>
     margin:0;
     padding:0;
     height:100vh;
