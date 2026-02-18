@@ -3,163 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK1 Game</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<title>Anniversary 💕</title>
 
 <style>
-*{
+
+/* พื้นหลังหวานฟุ้ง */
+body{
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family:'Orbitron',sans-serif;
-}
-
-body{
     height:100vh;
-    background:url('bg.jpg') no-repeat center center/cover;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
-    position:relative;
-}
-
-/* เลเยอร์มืด */
-body::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:linear-gradient(135deg,rgba(0,0,0,0.85),rgba(255,0,120,0.4));
-    z-index:0;
-}
-
-/* กล่อง */
-.container{
-    position:relative;
-    z-index:2;
     text-align:center;
-    background:rgba(0,0,0,0.7);
-    padding:50px;
-    border-radius:20px;
-    box-shadow:0 0 40px #ff0080;
-    backdrop-filter:blur(10px);
-}
-
-/* ชื่อเลื่อนเข้าจอ */
-.game-title{
-    font-size:60px;
-    color:#ff2fa0;
-    text-shadow:0 0 15px #ff0080,0 0 40px #ff0080;
-    position:relative;
-    animation:slideIn 1.5s ease-out forwards;
-    opacity:0;
-}
-
-/* เอฟเฟกต์ Slide */
-@keyframes slideIn{
-    0%{
-        transform:translateX(-100vw);
-        opacity:0;
-    }
-    70%{
-        transform:translateX(20px);
-        opacity:1;
-    }
-    100%{
-        transform:translateX(0);
-        opacity:1;
-    }
-}
-
-/* เอฟเฟกต์ Glitch */
-.game-title::before,
-.game-title::after{
-    content:attr(data-text);
-    position:absolute;
-    left:0;
-    width:100%;
+    font-family:'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff9ecf,#ff4fa3,#ffb6e6);
+    background-size:400% 400%;
+    animation: bgmove 8s ease infinite;
     overflow:hidden;
-}
-
-.game-title::before{
-    animation:glitchTop 2s infinite linear alternate-reverse;
-    color:#00ffff;
-    clip-path:polygon(0 0,100% 0,100% 45%,0 45%);
-}
-
-.game-title::after{
-    animation:glitchBottom 2s infinite linear alternate-reverse;
-    color:#ff00ff;
-    clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);
-}
-
-@keyframes glitchTop{
-    0%{transform:translate(0);}
-    20%{transform:translate(-3px,-3px);}
-    40%{transform:translate(3px,3px);}
-    60%{transform:translate(-3px,3px);}
-    80%{transform:translate(3px,-3px);}
-    100%{transform:translate(0);}
-}
-
-@keyframes glitchBottom{
-    0%{transform:translate(0);}
-    20%{transform:translate(3px,3px);}
-    40%{transform:translate(-3px,-3px);}
-    60%{transform:translate(3px,-3px);}
-    80%{transform:translate(-3px,3px);}
-    100%{transform:translate(0);}
-}
-
-/* ปุ่ม */
-.btn{
-    display:inline-block;
-    margin:15px;
-    padding:15px 30px;
-    border-radius:50px;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:bold;
     color:white;
+}
+
+/* ขยับพื้นหลัง */
+@keyframes bgmove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* กล่องกลาง */
+.container{
+    background: rgba(255,255,255,0.15);
+    padding:50px;
+    border-radius:30px;
+    backdrop-filter: blur(15px);
+    box-shadow:0 0 40px rgba(255,255,255,0.6);
+    animation: fadeIn 2s ease;
+}
+
+/* หัวข้อหลัก */
+h1{
+    font-size:48px;
+    margin-bottom:20px;
+    text-shadow:0 0 20px #fff;
+    animation: glow 2s infinite alternate;
+}
+
+/* เอฟเฟกต์เรืองแสง */
+@keyframes glow{
+    from{ text-shadow:0 0 10px #fff;}
+    to{ text-shadow:0 0 30px #ff00cc;}
+}
+
+/* ข้อความรอง */
+p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+/* ปุ่มหัวใจ */
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff1493,#ff69b4);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px #ff69b4;
     transition:0.3s;
 }
 
-.facebook{
-    background:linear-gradient(45deg,#1877f2,#00c6ff);
-}
-
-.instagram{
-    background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);
-}
-
-.btn:hover{
+button:hover{
     transform:scale(1.1);
-    box-shadow:0 0 25px white;
 }
+
+/* หัวใจลอย */
+.heart{
+    position:absolute;
+    bottom:-50px;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes floatUp{
+    0%{ transform:translateY(0); opacity:0.7;}
+    100%{ transform:translateY(-100vh); opacity:0;}
+}
+
+/* เอฟเฟกต์เข้าหน้า */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
+    <h1>สุขสันต์วันครบรอบนะค้าบที่รักก 💕</h1>
+    <p>
+        ขอบคุณที่อยู่ข้างกันเสมอ 💖<br>
+        ทุกช่วงเวลาที่มีเธอคือความสุขที่สุดเลย ✨<br>
+        ขอให้เรามีกันแบบนี้ไปนาน ๆ นะ
+    </p>
 
-<h1 class="game-title" data-text="MK1 Game">
-    MK1 Game
-</h1>
-
-<br>
-
-<a class="btn facebook" href="https://www.facebook.com/share/1B5c7GuPdh/" target="_blank">
-    Facebook
-</a>
-
-<a class="btn instagram" href="https://www.instagram.com/non_pim1?igsh=MXRrazNkcGl5eWx6Ng==" target="_blank">
-    Instagram
-</a>
-
+    <button onclick="showLove()">กดดูความในใจ 💌</button>
 </div>
+
+<script>
+function showLove(){
+    alert("รักที่สุดเลยนะ 💕 อยู่ด้วยกันไปนาน ๆ เลยน้าาา ✨");
+}
+
+/* สร้างหัวใจลอย */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random()*20 + 20) + "px";
+    heart.style.animationDuration = (Math.random()*3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,300);
+</script>
 
 </body>
 </html>
